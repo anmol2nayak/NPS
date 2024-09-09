@@ -1,0 +1,17 @@
+Step 1: Setting Up the Network Topology
+- Add two Cisco switches and several PCs in Cisco Packet Tracer.
+- Connect PCs to switches and link the two switches together using appropriate cables.
+
+Step 2: Configuring VLANs
+- Create two VLANs (e.g., Sales and Engineering) on the switches.
+- Assign names to the VLANs.
+
+Step 3: Assigning Ports to VLANs
+- Assign specific switch ports to each VLAN to group PCs accordingly.
+
+Step 4: Configuring Trunking Between Switches
+- Configure trunking on the switch ports that connect the two switches to allow multiple VLANs to communicate.
+
+Step 5: Testing Connectivity
+- Assign IP addresses to PCs within the VLAN subnets.
+- Test connectivity by pinging between PCs within the same VLAN.
