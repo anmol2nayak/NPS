@@ -1,0 +1,55 @@
+Experiment 10: Configuring Standard and Extended Access Control Lists (ACLs) in Cisco Packet Tracer
+Objective
+The goal is to set up Standard and Extended Access Control Lists (ACLs) to control network traffic and restrict access based on IP addresses and protocols.
+
+Steps
+1. Setup Your Topology
+Open Cisco Packet Tracer and add the required devices (e.g., routers, switches, PCs).
+Connect devices using appropriate cables, ensuring they are in the correct ports.
+
+2. Configure IP Addresses
+Configure IP addresses on each device to ensure they can communicate within the network.
+Assign IP addresses to routers' interfaces and end devices as per the network plan.
+
+3. Basic Routing Configuration
+Configure routing (if required) to enable communication between different network segments.
+You can use static routes or a dynamic routing protocol like RIP or OSPF to ensure all devices can communicate.
+
+4. Configure a Standard Access Control List
+Standard ACLs filter traffic based only on source IP addresses.
+Use the following commands on the router:
+plaintext
+Copy code
+Router(config)# access-list [ACL Number] permit [Source IP] [Wildcard Mask]
+Router(config)# interface [Interface Name]
+Router(config-if)# ip access-group [ACL Number] in
+Example: To allow traffic from 192.168.1.0 and block others:
+plaintext
+Copy code
+Router(config)# access-list 10 permit 192.168.1.0 0.0.0.255
+Router(config)# interface GigabitEthernet0/0
+Router(config-if)# ip access-group 10 in
+
+5. Configure an Extended Access Control List
+Extended ACLs filter traffic based on both source and destination IP addresses, ports, and protocols.
+Example command:
+plaintext
+Copy code
+Router(config)# access-list [ACL Number] permit [Protocol] [Source IP] [Wildcard Mask] [Destination IP] [Wildcard Mask] eq [Port Number]
+Router(config)# interface [Interface Name]
+Router(config-if)# ip access-group [ACL Number] in
+Example: To allow HTTP traffic from 192.168.1.0 to 192.168.2.0:
+plaintext
+Copy code
+Router(config)# access-list 100 permit tcp 192.168.1.0 0.0.0.255 192.168.2.0 0.0.0.255 eq 80
+Router(config)# interface GigabitEthernet0/1
+Router(config-if)# ip access-group 100 in
+
+6. Test and Verify ACL Configuration
+Use the ping and traceroute commands to test connectivity.
+Verify if the ACLs are correctly restricting access by attempting connections from allowed and blocked IPs.
+Use the command show access-lists on the router to view the ACLs and check if they are applied as expected.
+
+7. Documentation and Analysis
+Record your configurations and test results.
+Analyze the traffic flow and confirm if the ACLs are performing as expected.
